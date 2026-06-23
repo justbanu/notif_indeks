@@ -29,7 +29,7 @@ def kirim_notifikasi_email(subjek, isi_pesan):
             server.starttls()
             server.login(EMAIL_PENGIRIM, PASSWORD_KAMU)
             server.send_message(msg)
-        print("✅ Email notifikasi berhasil dikirim!")
+        print("Email notifikasi berhasil dikirim!")
     except Exception as e:
         print(f"Gagal mengirim email. Error: {e}")
 
@@ -95,14 +95,14 @@ if __name__ == "__main__":
             # 3. Bandingkan nilai lama dengan nilai sekarang
             for matkul, nilai in nilai_sekarang.items():
                 if nilai_lama.get(matkul) == "" and nilai != "":
-                    subjek_email = f"🎉 [SIX ITB] Nilai {matkul} Keluar!"
+                    subjek_email = f" [SIX ITB] Nilai {matkul} Keluar!"
                     pesan_email = (
                         f"Halo Banu,\n\nNilai untuk mata kuliah {matkul} "
                         f"sudah diperbarui di SIX ITB.\nIndeks kamu: {nilai}\n\n"
                         f"Silakan cek langsung."
                     )
                     kirim_notifikasi_email(subjek_email, pesan_email)
-                    print(f"👉 Notifikasi email dikirim untuk {matkul}")
+                    print(f" Notifikasi email dikirim untuk {matkul}")
 
             # 4. Simpan kondisi terbaru ke file JSON
             with open(FILE_DATA, "w") as f:
@@ -111,7 +111,7 @@ if __name__ == "__main__":
             print(f"Pengecekan selesai. Tidur selama 15 menit ke depan...\n")
             
         except Exception as e:
-            print(f"❌ Terjadi kesalahan pada sesi ini: {e}")
+            print(f"Terjadi kesalahan pada sesi ini: {e}")
             print("Mencoba lagi di sesi berikutnya...\n")
             
         # Program akan diam/tidur selama 15 menit sebelum mengulang ke atas
