@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def kirim_notifikasi_email(subjek, isi_pesan):
-    # Sekarang kita panggil dari environment system, bukan hardcode teks lagi
     EMAIL_PENGIRIM = os.getenv("EMAIL_USER")
     PASSWORD_KAMU = os.getenv("EMAIL_PASS")
     EMAIL_PENERIMA = EMAIL_PENGIRIM  # Dikirim ke diri sendiri
@@ -22,7 +21,7 @@ def kirim_notifikasi_email(subjek, isi_pesan):
             server.starttls()
             server.login(EMAIL_PENGIRIM, PASSWORD_KAMU)
             server.send_message(msg)
-        print("✅ Email notifikasi berhasil dikirim!")
+        print("Email notifikasi berhasil dikirim!")
     except Exception as e:
         print(f"Gagal mengirim email. Error: {e}")
 

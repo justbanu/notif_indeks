@@ -6,7 +6,6 @@ from email.message import EmailMessage
 from dotenv import load_dotenv
 from playwright.sync_api import sync_playwright
 
-# ... sisa kode di bawahnya tetap sama ...
 # Load variable dari file .env (EMAIL_USER dan EMAIL_PASS)
 load_dotenv()
 
@@ -36,14 +35,12 @@ def kirim_notifikasi_email(subjek, isi_pesan):
 
 def cek_nilai():
     with sync_playwright() as p:
-        # headless=True agar berjalan diam-diam di latar belakang
         browser = p.chromium.launch(headless=True)
 
         # Memuat sesi login yang sudah direkam sebelumnya
         context = browser.new_context(storage_state="auth.json")
         page = context.new_page()
 
-        # Langsung lompat ke halaman transkrip historis kamu
         url_historis = "https://six.itb.ac.id/app/mahasiswa/18225109/statusmhs/transkrip/historis/2021180266"
         page.goto(url_historis)
         page.wait_for_load_state("networkidle")
@@ -69,13 +66,13 @@ def cek_nilai():
         return nilai_terbaru
 
 
-# --- Logika Utama Penyelaras Notifikasi ---
+# --- Logika Utama  Notifikasi ---
 # --- Logika Utama Penyelaras Notifikasi (Mode Auto-Loop) ---
 if __name__ == "__main__":
     # Menghitung menit ke dalam detik (15 menit = 900 detik)
     JEDA_WAKTU = 15 * 60 
     
-    print("🚀 Program pemantau indeks SIX ITB aktif!")
+    print(" Program pemantau indeks SIX ITB aktif!")
     print("Program akan berjalan otomatis di terminal ini setiap 15 menit.")
     print("Jangan tutup terminal ini agar pengecekan tetap berjalan.\n")
     
